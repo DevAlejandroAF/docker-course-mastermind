@@ -1,0 +1,5 @@
+go-app
+.gitignore
+.dockerignore
+Dockerfile
+vendor/
