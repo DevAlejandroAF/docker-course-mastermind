@@ -1,11 +1,19 @@
 const express = require('express')
 const app = express()
-const port = 4000
+const port = 8080
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+  res.send('Hello World!');
+});
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+});
+
+process.once("SIGTERM", () => {
+  server.close(() => console.log("SIGTERM"));
+});
+
+process.once("SIGINT", () => {
+  server.close(() => console.log("SIGINT"));
+});
